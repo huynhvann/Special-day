@@ -160,22 +160,16 @@ function toggleShuffle(btn) {
 
 
 
-
-function toggleRepeat() {
-  isRepeat = !isRepeat;
-  event.target.classList.toggle("active", isRepeat);
-}
-
 function toggleRepeat(btn) {
   isRepeat = !isRepeat;
   btn.classList.toggle("active", isRepeat);
 }
 audio.addEventListener("ended", () => {
   if (isRepeat) {
-    // Repeat 1 bài
+
     playSong(currentIndex);
   } else {
-    // Chuyển bài tiếp theo
+  
     nextSong();
   }
 });
@@ -324,3 +318,4 @@ const mysticTexts = document.querySelectorAll(".mystic-text");
     mysticTexts[mysticIndex].classList.add("active");
 
   }, 4500);
+
