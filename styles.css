@@ -172,21 +172,40 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
-    .hidden-message {
+   .hidden-message {
   margin-top: 30px;
   text-align: center;
   min-height: 120px;
   position: relative;
-  animation: fadeIn 2s ease-in-out;
-      color: #d6336c;
-      font-weight: bold;
-       font-style: italic;
+
+  font-weight: bold;
+  font-style: italic;
+  font-size: 1.2rem;
+
+  /* chữ gradient lung linh */
+  background: linear-gradient(
+    120deg,
+    #ff4d6d,
+    #ffd6e0,
+    #ff85a1,
+    #ffd6e0,
+    #ff4d6d
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation:
+    fadeIn 2s ease-in-out,
+    shimmer 4s ease-in-out infinite;
 }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
     .mystic-text {
   position: absolute;
   left: 50%;
@@ -384,3 +403,4 @@
     transform: translateY(0);
   }
 }
+
