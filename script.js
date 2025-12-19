@@ -139,19 +139,15 @@ function highlightSong() {
 
 /* play / pause */
 function togglePlay() {
-  const btn = document.getElementById("playBtn");
-  const icon = btn.querySelector("i");
-
   if (audio.paused) {
     audio.play();
-    icon.classList.replace("fa-play", "fa-pause");
-    btn.classList.add("active");
+    updatePlayButton(true);
   } else {
     audio.pause();
-    icon.classList.replace("fa-pause", "fa-play");
-    btn.classList.remove("active");
+    updatePlayButton(false);
   }
 }
+
 /* next / prev */
 function nextSong() {
   if (isShuffle) {
@@ -334,5 +330,6 @@ const mysticTexts = document.querySelectorAll(".mystic-text");
     mysticTexts[mysticIndex].classList.add("active");
 
   }, 4500);
+
 
 
