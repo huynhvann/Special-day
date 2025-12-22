@@ -331,21 +331,7 @@ const mysticTexts = document.querySelectorAll(".mystic-text");
 
   }, 4500);
 
-window.addEventListener("load", () => {
-  audio.volume = 0;
-  audio.play().then(() => {
-    // fade in + bỏ mute
-    audio.muted = false;
 
-    let v = 0;
-    const fade = setInterval(() => {
-      v += 0.05;
-      audio.volume = Math.min(v, 1);
-      if (v >= 1) clearInterval(fade);
-    }, 100);
 
-    updatePlayButton(true);
-  });
-});
 
 
