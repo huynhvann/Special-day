@@ -190,10 +190,13 @@ let typingTimer = null;
 
 const message = `Hơi zô tri nhưng hãy đọc nhaaa
 
-Văn không biết nên bắt đầu thế nào, chỉ biết rằng đây là lần đầu tiên mình làm những điều mà có lẽ Mai sẽ thấy thật vô triii. Nhưng cũng là lần đầu tiên Văn gặp một người con gái khiến trái tim rung động nhiều đến vậy—một người khiến mình muốn ở bên, muốn tìm hiểu, muốn quan tâm và chăm sóc từng chút một. 
-Không rõ lý do cụ thể, nhưng từ khi gặp Mai, mỗi ngày Văn đều tìm một cơ hội, một lý do để được gặp, được ở gần Mai thêm một chút. Mỗi khoảnh khắc bên Mai, dù chỉ là những điều nhỏ bé, đều mang đến cho Văn niềm vui và hạnh phúc. Vì thế, Văn luôn muốn dành thời gian để ở bên Mai. Tương lai có thể khó đoán, nhưng hiện tại, Văn chỉ muốn Mai biết rằng, bất kể điều gì xảy ra, Văn sẽ luôn ở đây, yêu Mai hết lòng và làm tất cả trong khả năng để Mai cảm thấy vui vẻ, hạnh phúc.
+Mai à, có lẽ đây là lần đầu tiên Văn làm điều này, và Văn không biết bắt đầu từ đâu. Chỉ biết rằng từ ngày gặp Mai, trái tim Văn chưa bao giờ rung động như thế. Mai là người khiến Văn muốn ở bên, muốn tìm hiểu, muốn bảo vệ và chăm sóc.
+Không hiểu vì sao, nhưng từng ngày trôi qua, Văn luôn tìm lý do để được gần Mai hơn một chút. Những phút giây bên Mai, dù chỉ là những điều đơn giản, cũng đủ khiến Văn cảm thấy bình yên và hạnh phúc.
+Văn không biết tương lai sẽ thế nào, nhưng hiện tại, Văn chỉ muốn Mai hiểu rằng, dù chuyện gì xảy ra, Văn sẽ luôn ở đây, yêu Mai hết lòng và làm tất cả trong khả năng để Mai luôn vui vẻ và hạnh phúc.
 
-💫 Tên Văn nhưng không cóa giỏi văn nên bạn Mike bỏ qua nhennn =))))`;
+💫 Con nợ tên Văn nhưng không cóa giỏi văn nên bạn Mike bỏ qua nhennn =))))
+
+💫 Con nợ chỉ giỏi Yêuuuu chủ nợ thoiiiii =))))) 💖`;
 
 function typeMessage() {
   const typedMessage = document.getElementById('typedMessage');
@@ -330,6 +333,7 @@ const mysticTexts = document.querySelectorAll(".mystic-text");
     mysticTexts[mysticIndex].classList.add("active");
 
   }, 4500);
+
 
 
 
