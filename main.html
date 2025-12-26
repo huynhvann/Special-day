@@ -32,7 +32,7 @@ body {
   to { transform: translateY(110vh); opacity: 1; }
 }
 
-/* ===== GATE BOX ===== */
+/* ===== BOX ===== */
 .gate-box {
   position: relative;
   z-index: 10;
@@ -44,7 +44,6 @@ body {
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
   text-align: center;
   animation: fadeIn 1s ease;
-  cursor: pointer;
 }
 
 @keyframes fadeIn {
@@ -61,52 +60,28 @@ body {
   font-size: 0.95rem;
   color: #555;
 }
-
-/* ===== SHAKE ===== */
-.shake {
-  animation: shake 0.4s;
-}
-
-@keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  50% { transform: translateX(5px); }
-  75% { transform: translateX(-5px); }
-  100% { transform: translateX(0); }
-}
 </style>
 </head>
 
 <body>
 
-<!-- AUDIO -->
-<audio id="mainAudio" autoplay loop>
-  <source src="assets/music/Phép Màu (Đàn cá gỗ OST) - MAYDAYs ft. Minh Tốc  Offical MV.mp3" type="audio/mpeg">
+<!-- ===== AUDIO: AUTOPLAY + LOOP ===== -->
+<audio autoplay loop preload="auto">
+  <source src="assets/music/Phép Màu (Đàn cá gỗ OST) - MAYDAYs ft. Minh Tốc Offical MV.mp3" type="audio/mpeg">
+  Trình duyệt không hỗ trợ audio.
 </audio>
 
 <!-- HEARTS -->
 <div class="hearts" id="hearts"></div>
 
-<!-- BOX -->
-<div class="gate-box" id="gateBox">
+<!-- CONTENT -->
+<div class="gate-box">
   <h2>Giỏi quá ta, nhưng trailer tới đấy thoiiii =)))</h2>
   <p>Đợi tới ngày 01/01/2026 nhaaaa 💗</p>
-  <small> hun nhẹ 1 cái đi =))) </small>
+  <small> hun 1 cái nha =)))) </small>
 </div>
 
 <script>
-/* ===== AUTOPLAY FIX ===== */
-const audio = document.getElementById("mainAudio");
-
-function enableAudio() {
-  audio.play().catch(() => {});
-  document.removeEventListener("click", enableAudio);
-  document.removeEventListener("touchstart", enableAudio);
-}
-
-document.addEventListener("click", enableAudio);
-document.addEventListener("touchstart", enableAudio);
-
 /* ===== HEART FALL ===== */
 const hearts = ["💗","💖","💘","💕"];
 const heartBox = document.getElementById("hearts");
@@ -123,6 +98,3 @@ for (let i = 0; i < 25; i++) {
 
 </body>
 </html>
-
-
-
