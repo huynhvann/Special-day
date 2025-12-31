@@ -217,15 +217,16 @@ function checkPassword() {
 
   loading.style.display = "block";
 
-  setTimeout(() => {
+ setTimeout(() => {
     if (input === PASSWORD) {
-  
+ 
+      localStorage.setItem("accessGranted", "yes");
       window.location.href = "loading.html";
     } else {
-     
+
       window.location.href = "liuliu.html";
     }
-  }, 1000);
+  }, 1200);
 }
 
 /* hearts */
