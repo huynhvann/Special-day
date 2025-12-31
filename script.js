@@ -190,11 +190,13 @@ let typingTimer = null;
 
 const message = `Hơi zô tri nhưng Mai hãy đọc nhaaa
 
-Mai ơi, 
+Mai nè, 
 
-Đây là lần đầu tiên Văn làm những điều như thế này, nên có lẽ Văn không biết nên bắt đầu từ đâu cho trọn vẹn. Chỉ biết rằng từ ngày đầu tiên về Long Thành, trái tim Văn đã bắt đầu rung động lúc nào hong hay. 
+Có lẽ đây là lần đầu tiên Văn làm những điều như thế này, nên có lẽ Văn không biết nên bắt đầu từ đâu cho nó trọn vẹn và hoàn hảo cả. Chỉ biết rằng từ ngày đầu tiên về Long Thành, trái tim Văn đã bắt đầu rung động lúc nào hong hay. 
 
-Trong khoản thời gian dó, suy nghĩ của Văn là lúc nào cũng muốn được thấy Mai, muốn gặp Mai, muốn ở bên và tìm hiểu Mai nhiều hơn. Ròiiiii dần dần, những cảm xúc ấy lớn lên thành mong muốn được bảo vệ, chăm sóc và quan tâm Mai nhiều hơn nữa. Xin lũi nếu điều đó được cho là tham lam =)))
+Trong khoản thời gian đó, suy nghĩ của Văn là lúc nào cũng muốn được thấy Mai, muốn gặp Mai, muốn ở bên và tìm hiểu Mai nhiều hơn. Ròiiiii dần dần, những cảm xúc ấy lớn lên thành mong muốn được bảo vệ, chăm sóc và quan tâm Mai nhiều hơn nữa.
+
+Xin lũi nếu điều đó được cho là tham lam =)))
 
 Chính vì vậy mà mỗi ngày trôi qua, Văn luôn tìm cho mình một lý do để được gần Mai hơn một chút. Những khoảng khắc bên cạnh Mai, dù chỉ là những điều rất đơn giản, cũng đủ khiến Văn cảm thấy vui và hạnh phúc.
 
@@ -342,6 +344,7 @@ const mysticTexts = document.querySelectorAll(".mystic-text");
     mysticTexts[mysticIndex].classList.add("active");
 
   }, 4500);
+
 
 
 
