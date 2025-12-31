@@ -213,21 +213,16 @@ function togglePassword() {
 /* check password */
 function checkPassword() {
   const input = document.getElementById("password").value;
-  const loading = document.getElementById("loading");
 
-  loading.style.display = "block";
-
- setTimeout(() => {
-    if (input === PASSWORD) {
- 
-      localStorage.setItem("accessGranted", "yes");
-      window.location.href = "loading.html";
-    } else {
-
-      window.location.href = "liuliu.html";
-    }
-  }, 1200);
+  if (input === PASSWORD) {
+    localStorage.setItem("accessGranted", "yes");
+    window.location.href = "loading.html";
+  } else {
+    window.location.href = "liuliu.html";
+  }
 }
+
+
 
 /* hearts */
 const hearts = ["💗","💖","💘","💕"];
