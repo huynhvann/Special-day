@@ -240,6 +240,7 @@ function closePopup() {
 
 const hintText = "👉 Em click vào hình để nghe nha =)))";
 let hintElement = document.getElementById("typingHint");
+let hintIndex = 0;
 
 function loopTyping() {
   if (hintIndex <= hintText.length) {
@@ -248,10 +249,11 @@ function loopTyping() {
     setTimeout(loopTyping, 50);
   } else {
     hintIndex = 0;
-    setTimeout(loopTyping, 800); // nghỉ 0.8 giây trước khi lặp
+    setTimeout(loopTyping, 800);
   }
 }
 loopTyping();
+
     
 function showRatingMessage() {
     const value = document.getElementById("rating-select").value;
@@ -345,6 +347,7 @@ const mysticTexts = document.querySelectorAll(".mystic-text");
     mysticTexts[mysticIndex].classList.add("active");
 
   }, 4500);
+
 
 
 
