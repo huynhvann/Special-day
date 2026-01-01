@@ -182,6 +182,19 @@
 //    localStorage.removeItem("accessGranted");
 // });
 </script>
+  <script>
+document.addEventListener("click", function playMusicOnce() {
+  const audio = document.getElementById("mainAudio");
+
+  audio.play().then(() => {
+    console.log("🎵 Nhạc đã chạy trên iPhone");
+  }).catch(err => {
+    console.log("❌ iOS chặn autoplay:", err);
+  });
+
+  document.removeEventListener("click", playMusicOnce);
+});
+</script>
 </body>
 
 </html>
