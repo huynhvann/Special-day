@@ -208,6 +208,7 @@ Văn không dám nói trước tương lai sẽ thế nào, nhưng ở thời đ
 
 💫 Nhưng con nợ lại rất giỏi… yêu chủ nợ thoiiiii =))))) 💖`;
 
+
 function typeMessage() {
   const typedMessage = document.getElementById('typedMessage');
   if (i < message.length) {
@@ -345,6 +346,7 @@ const mysticTexts = document.querySelectorAll(".mystic-text");
     mysticTexts[mysticIndex].classList.add("active");
 
   }, 4500);
+
 
 
 
