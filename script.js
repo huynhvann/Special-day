@@ -1,32 +1,30 @@
-   /* =========================
-   SCROLL
-========================= */
-function scrollToSection() {
-  document.getElementById("main-content").scrollIntoView({ behavior: "smooth" });
-}
+    function scrollToSection() {
+      document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
+    }
+    function showMessage() {
+      const msg = document.getElementById('hiddenMessage');
+      msg.style.display = 'block';
+    }
 
-/* =========================
-   SAO & TIM BAY
-========================= */
-const starContainer = document.getElementById("star-container");
-for (let i = 0; i < 50; i++) {
-  const star = document.createElement("span");
-  star.style.left = Math.random() * 100 + "%";
-  star.style.top = Math.random() * 100 + "%";
-  star.style.animationDuration = Math.random() * 3 + 2 + "s";
-  starContainer.appendChild(star);
-}
+    const starContainer = document.getElementById('star-container');
+    for (let i = 0; i < 50; i++) {
+      let star = document.createElement('span');
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      starContainer.appendChild(star);
+    }
 
-const heartContainer = document.getElementById("heart-container");
-const hearts = ["💖", "💗", "💘", "💕", "💞"];
-for (let i = 0; i < 20; i++) {
-  const span = document.createElement("span");
-  span.innerText = hearts[Math.floor(Math.random() * hearts.length)];
-  span.style.left = Math.random() * 100 + "%";
-  span.style.top = "-" + Math.random() * 20 + "px";
-  span.style.animationDuration = Math.random() * 5 + 3 + "s";
-  heartContainer.appendChild(span);
-}
+    const heartContainer = document.getElementById('heart-container');
+    const hearts = ['💖','💗','💘','💕','💞'];/**;**/
+    for (let i = 0; i < 20; i++) {
+      const span = document.createElement('span');
+      span.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+      span.style.left = Math.random() * 100 + '%';
+      span.style.animationDuration = (Math.random() * 5 + 3) + 's';
+      span.style.top = '-' + Math.random() * 20 + 'px';
+      heartContainer.appendChild(span);
+    }
  const audio = document.getElementById("mainAudio");
 
 const playlists = {
@@ -75,25 +73,32 @@ let currentPlaylist = [];
 let currentIndex = 0;
 let isShuffle = false;
 let isRepeat = false;
-/* =========================
-   PLAYER CORE
-========================= */
 function updatePlayButton(isPlaying) {
-  const icon = document.querySelector("#playBtn i");
-  icon.className = isPlaying ? "fa-solid fa-pause" : "fa-solid fa-play";
+  const btn = document.getElementById("playBtn");
+  const icon = btn.querySelector("i");
+
+  if (isPlaying) {
+    icon.classList.replace("fa-play", "fa-pause");
+    btn.classList.add("active");
+  } else {
+    icon.classList.replace("fa-pause", "fa-play");
+    btn.classList.remove("active");
+  }
 }
 
+/* đổi playlist */
 function changePlaylist() {
   const key = document.getElementById("playlistSelect").value;
-  if (!key || playlists[key].length === 0) return;
+  if (!key) return;
 
   currentPlaylist = [...playlists[key]];
   currentIndex = 0;
 
   renderSongList();
-  playSong(0); // user gesture → OK
+  playSong(0);
 }
 
+/* render list */
 function renderSongList() {
   const list = document.getElementById("songList");
   list.innerHTML = "";
@@ -106,36 +111,44 @@ function renderSongList() {
   });
 }
 
+/* play bài */
 function playSong(index) {
   currentIndex = index;
   audio.src = currentPlaylist[index].src;
-  audio.currentTime = 0;
 
-  audio.play()
-    .then(() => updatePlayButton(true))
-    .catch(err => console.log("Play bị chặn:", err));
+  audio.play().then(() => {
+    updatePlayButton(true);
+  });
 
   document.getElementById("nowPlaying").innerText =
     "🎧 Đang phát: " + currentPlaylist[index].title;
 
+  document.getElementById("nowPlaying").style.animation = "none";
+  void document.getElementById("nowPlaying").offsetWidth;
+  document.getElementById("nowPlaying").style.animation = "fadeIn 0.4s ease";
+
   highlightSong();
 }
 
+/* highlight */
 function highlightSong() {
   document.querySelectorAll("#songList li").forEach((li, i) => {
     li.classList.toggle("active", i === currentIndex);
   });
 }
 
+/* play / pause */
 function togglePlay() {
   if (audio.paused) {
-    audio.play().then(() => updatePlayButton(true));
+    audio.play();
+    updatePlayButton(true);
   } else {
     audio.pause();
     updatePlayButton(false);
   }
 }
 
+/* next / prev */
 function nextSong() {
   if (isShuffle) {
     currentIndex = Math.floor(Math.random() * currentPlaylist.length);
@@ -151,20 +164,27 @@ function prevSong() {
   playSong(currentIndex);
 }
 
+/* shuffle */
 function toggleShuffle(btn) {
   isShuffle = !isShuffle;
   btn.classList.toggle("active", isShuffle);
 }
 
+
+
 function toggleRepeat(btn) {
   isRepeat = !isRepeat;
   btn.classList.toggle("active", isRepeat);
 }
-
 audio.addEventListener("ended", () => {
-  isRepeat ? playSong(currentIndex) : nextSong();
-});
+  if (isRepeat) {
 
+    playSong(currentIndex);
+  } else {
+  
+    nextSong();
+  }
+});
  let i = 0;
 let typingTimer = null;
 
@@ -187,7 +207,6 @@ Văn không dám nói trước tương lai sẽ thế nào, nhưng ở thời đ
 💫 Con nợ tên Văn, không giỏi văn cho lắm, nên bạn Mike bỏ qua nha =))))
 
 💫 Nhưng con nợ lại rất giỏi… yêu chủ nợ thoiiiii =))))) 💖`;
-
 
 function typeMessage() {
   const typedMessage = document.getElementById('typedMessage');
@@ -221,7 +240,7 @@ function closePopup() {
 
 const hintText = "👉 Em click vào hình để nghe nha =)))";
 let hintElement = document.getElementById("typingHint");
-let hintIndex = 0;
+
 function loopTyping() {
   if (hintIndex <= hintText.length) {
     hintElement.innerHTML = hintText.slice(0, hintIndex);
@@ -282,8 +301,8 @@ function askQuestion() {
       '06/9',
       '6 tháng 9',
       '6/09',
-       '0609',
       'ngày Văn gặp Mai',
+      '0609',
       'ngày văn gặp mai'
     ];
 
@@ -326,29 +345,6 @@ const mysticTexts = document.querySelectorAll(".mystic-text");
     mysticTexts[mysticIndex].classList.add("active");
 
   }, 4500);
-
-
-let firstTouchDone = false;
-
-function unlockAndPlay() {
-  if (firstTouchDone) return;
-  firstTouchDone = true;
-
-
-  if (!audio.src || audio.src === "") {
-    audio.src = "assets/music/Phép Màu (Đàn cá gỗ OST) - MAYDAYs ft. Minh Tốc  Offical MV.mp3";
-  }
-
-  audio.play().catch(err => {
-    console.log("iOS chặn:", err);
-  });
-
-  document.removeEventListener("touchstart", unlockAndPlay);
-  document.removeEventListener("click", unlockAndPlay);
-}
-
-document.addEventListener("touchstart", unlockAndPlay);
-document.addEventListener("click", unlockAndPlay);
 
 
 
