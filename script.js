@@ -325,5 +325,10 @@ const mysticTexts = document.querySelectorAll(".mystic-text");
     mysticTexts[mysticIndex].classList.add("active");
 
   }, 4500);
+function startExperience() {
+  scrollToSection();
+}
+
+
 
 
