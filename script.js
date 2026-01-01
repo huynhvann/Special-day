@@ -328,6 +328,25 @@ const mysticTexts = document.querySelectorAll(".mystic-text");
 function startExperience() {
   scrollToSection();
 }
+let iosUnlocked = false;
+
+function startExperience() {
+  scrollToSection();
+
+  if (!iosUnlocked) {
+    audio.src = "assets/music/Phép Màu (Đàn cá gỗ OST) - MAYDAYs ft. Minh Tốc  Offical MV.mp3";
+
+    audio.play().then(() => {
+      audio.pause();       // chỉ unlock
+      audio.currentTime = 0;
+      iosUnlocked = true;
+      console.log("iOS audio unlocked");
+    }).catch(err => {
+      console.log("iOS unlock fail:", err);
+    });
+  }
+}
+
 
 
 
