@@ -1,30 +1,32 @@
-    function scrollToSection() {
-      document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
-    }
-    function showMessage() {
-      const msg = document.getElementById('hiddenMessage');
-      msg.style.display = 'block';
-    }
+   /* =========================
+   SCROLL
+========================= */
+function scrollToSection() {
+  document.getElementById("main-content").scrollIntoView({ behavior: "smooth" });
+}
 
-    const starContainer = document.getElementById('star-container');
-    for (let i = 0; i < 50; i++) {
-      let star = document.createElement('span');
-      star.style.left = Math.random() * 100 + '%';
-      star.style.top = Math.random() * 100 + '%';
-      star.style.animationDuration = (Math.random() * 3 + 2) + 's';
-      starContainer.appendChild(star);
-    }
+/* =========================
+   SAO & TIM BAY
+========================= */
+const starContainer = document.getElementById("star-container");
+for (let i = 0; i < 50; i++) {
+  const star = document.createElement("span");
+  star.style.left = Math.random() * 100 + "%";
+  star.style.top = Math.random() * 100 + "%";
+  star.style.animationDuration = Math.random() * 3 + 2 + "s";
+  starContainer.appendChild(star);
+}
 
-    const heartContainer = document.getElementById('heart-container');
-    const hearts = ['💖','💗','💘','💕','💞'];/**;**/
-    for (let i = 0; i < 20; i++) {
-      const span = document.createElement('span');
-      span.innerText = hearts[Math.floor(Math.random() * hearts.length)];
-      span.style.left = Math.random() * 100 + '%';
-      span.style.animationDuration = (Math.random() * 5 + 3) + 's';
-      span.style.top = '-' + Math.random() * 20 + 'px';
-      heartContainer.appendChild(span);
-    }
+const heartContainer = document.getElementById("heart-container");
+const hearts = ["💖", "💗", "💘", "💕", "💞"];
+for (let i = 0; i < 20; i++) {
+  const span = document.createElement("span");
+  span.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+  span.style.left = Math.random() * 100 + "%";
+  span.style.top = "-" + Math.random() * 20 + "px";
+  span.style.animationDuration = Math.random() * 5 + 3 + "s";
+  heartContainer.appendChild(span);
+}
  const audio = document.getElementById("mainAudio");
 
 const playlists = {
@@ -73,32 +75,25 @@ let currentPlaylist = [];
 let currentIndex = 0;
 let isShuffle = false;
 let isRepeat = false;
+/* =========================
+   PLAYER CORE
+========================= */
 function updatePlayButton(isPlaying) {
-  const btn = document.getElementById("playBtn");
-  const icon = btn.querySelector("i");
-
-  if (isPlaying) {
-    icon.classList.replace("fa-play", "fa-pause");
-    btn.classList.add("active");
-  } else {
-    icon.classList.replace("fa-pause", "fa-play");
-    btn.classList.remove("active");
-  }
+  const icon = document.querySelector("#playBtn i");
+  icon.className = isPlaying ? "fa-solid fa-pause" : "fa-solid fa-play";
 }
 
-/* đổi playlist */
 function changePlaylist() {
   const key = document.getElementById("playlistSelect").value;
-  if (!key) return;
+  if (!key || playlists[key].length === 0) return;
 
   currentPlaylist = [...playlists[key]];
   currentIndex = 0;
 
   renderSongList();
-  playSong(0);
+  playSong(0); // user gesture → OK
 }
 
-/* render list */
 function renderSongList() {
   const list = document.getElementById("songList");
   list.innerHTML = "";
@@ -111,44 +106,36 @@ function renderSongList() {
   });
 }
 
-/* play bài */
 function playSong(index) {
   currentIndex = index;
   audio.src = currentPlaylist[index].src;
+  audio.currentTime = 0;
 
-  audio.play().then(() => {
-    updatePlayButton(true);
-  });
+  audio.play()
+    .then(() => updatePlayButton(true))
+    .catch(err => console.log("Play bị chặn:", err));
 
   document.getElementById("nowPlaying").innerText =
     "🎧 Đang phát: " + currentPlaylist[index].title;
 
-  document.getElementById("nowPlaying").style.animation = "none";
-  void document.getElementById("nowPlaying").offsetWidth;
-  document.getElementById("nowPlaying").style.animation = "fadeIn 0.4s ease";
-
   highlightSong();
 }
 
-/* highlight */
 function highlightSong() {
   document.querySelectorAll("#songList li").forEach((li, i) => {
     li.classList.toggle("active", i === currentIndex);
   });
 }
 
-/* play / pause */
 function togglePlay() {
   if (audio.paused) {
-    audio.play();
-    updatePlayButton(true);
+    audio.play().then(() => updatePlayButton(true));
   } else {
     audio.pause();
     updatePlayButton(false);
   }
 }
 
-/* next / prev */
 function nextSong() {
   if (isShuffle) {
     currentIndex = Math.floor(Math.random() * currentPlaylist.length);
@@ -164,27 +151,20 @@ function prevSong() {
   playSong(currentIndex);
 }
 
-/* shuffle */
 function toggleShuffle(btn) {
   isShuffle = !isShuffle;
   btn.classList.toggle("active", isShuffle);
 }
 
-
-
 function toggleRepeat(btn) {
   isRepeat = !isRepeat;
   btn.classList.toggle("active", isRepeat);
 }
-audio.addEventListener("ended", () => {
-  if (isRepeat) {
 
-    playSong(currentIndex);
-  } else {
-  
-    nextSong();
-  }
+audio.addEventListener("ended", () => {
+  isRepeat ? playSong(currentIndex) : nextSong();
 });
+
  let i = 0;
 let typingTimer = null;
 
@@ -345,4 +325,5 @@ const mysticTexts = document.querySelectorAll(".mystic-text");
     mysticTexts[mysticIndex].classList.add("active");
 
   }, 4500);
+
 
